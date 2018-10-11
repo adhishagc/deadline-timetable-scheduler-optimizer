@@ -1,12 +1,15 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class index {
 
 	public static void main(String[] args) {
 		
+		//Creating the LinkedList Data structure to save the Subject and timetable
+		LinkedList<Object> ExamTT = new LinkedList<Object>();
 		
 		//Creating Scanner instance for Keyboard inputs
 		Scanner scanner = new Scanner(System.in);
@@ -25,10 +28,25 @@ public class index {
 			//Variable to store the user input without the year part
 			String dateInput = scanner.nextLine();
 			
+			//ToDo check exception for date entries and format
+			
+			//Add to Timetable
+			String[][] data = new String[1][];
+			
+			//Store subject
+			data[0][0] = subjectInput;
+			//Store date
+			data[0][1] = dateInput;
+			
+			//Add to Timetable LinkedList
+			ExamTT.add(data);
+			
 			try {
 				//Converting the user input
 				Date dateConverted = new SimpleDateFormat("yyyy-mm-dd").parse("2018-"+dateInput);
 				/*System.out.println("Converted Date "+ dateConverted.toString());*/
+				
+				
 				
 				//Date comparison relative to today and printing outputs
 				int today = dateConverted.compareTo(new Date());
@@ -61,9 +79,7 @@ public class index {
 			
 			//Compare input and loop the subject collection
 			anyMore = status.equalsIgnoreCase("Y");
-			
-			
-			
+
 			
 		}while(anyMore);
 		
